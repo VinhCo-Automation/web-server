@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Page</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/sensor">Sensor</a>
+        <a href="/alarm">Alarm</a>
+        <a href="/run">Run</a>
+    </div>
+    <div class="section">
+        <h2>Sensor Data</h2>
+        <form class="add-form" data-table="sensor">
+            <input name="ID_Device" required placeholder="ID_Device">
+            <input name="Date" type="date" required>
+            <input name="Time" type="time" required>
+            <input name="Temp" type="number" step="0.01" required placeholder="Temp">
+            <input name="Hum" type="number" step="0.01" required placeholder="Hum">
+            <button type="submit">Thêm</button>
+            <a href="/export/sensor">Xuất CSV</a>
+        </form>
+        <table>
+            <thead><tr><th>ID_Device</th><th>Date</th><th>Time</th><th>Temp</th><th>Hum</th><th>Xóa</th></tr></thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.ID_Device }}</td><td>{{ row.Date }}</td><td>{{ row.Time }}</td>
+                    <td>{{ row.Temp }}</td><td>{{ row.Hum }}</td>
+                    <td><button onclick="deleteRow('sensor', '{{ row.ID_Device }}', '{{ row.Date }}', '{{ row.Time }}')">Xóa</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+<script src="/static/script.js"></script>
+</body>
+</html>

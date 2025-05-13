@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Run Page</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/sensor">Sensor</a>
+        <a href="/alarm">Alarm</a>
+        <a href="/run">Run</a>
+    </div>
+    <div class="section">
+        <h2>Run Data</h2>
+        <form class="add-form" data-table="run">
+            <input name="ID_Device" required placeholder="ID_Device">
+            <input name="Date" type="date" required>
+            <input name="Time" type="time" required>
+            <input name="Var" required placeholder="Var">
+            <button type="submit">Thêm</button>
+            <a href="/export/run">Xuất CSV</a>
+        </form>
+        <table>
+            <thead><tr><th>ID_Device</th><th>Date</th><th>Time</th><th>Var</th><th>Xóa</th></tr></thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.ID_Device }}</td><td>{{ row.Date }}</td><td>{{ row.Time }}</td><td>{{ row.Var }}</td>
+                    <td><button onclick="deleteRow('run', '{{ row.ID_Device }}', '{{ row.Date }}', '{{ row.Time }}')">Xóa</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+<script src="/static/script.js"></script>
+</body>
+</html>
