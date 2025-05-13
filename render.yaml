@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: flask-web-server
+    env: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: DB_HOST
+        value: b3tctusvlvharcpxgk0x-mysql.services.clever-cloud.com
+      - key: DB_USER
+        value: uutfyaq5terklpid
+      - key: DB_PASS
+        value: hmFL9JYj9speFoLSuw1d
+      - key: DB_NAME
+        value: b3tctusvlvharcpxgk0x
